@@ -3,8 +3,8 @@ Bundler.require()
 
 
 ActiveRecord::Base.establish_connection(
-  adapter: :postgresql,
-  database: :todo
+  :adapter =>'postgresql',
+  :database =>'productive_shiz'
 )
 
 require './models/todo.rb'
