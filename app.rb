@@ -7,7 +7,7 @@ ActiveRecord::Base.establish_connection(
   database: :todo
 )
 
-require '/models/todo.rb'
+require './models/todo.rb'
 
 get '/' do
   erb :index
