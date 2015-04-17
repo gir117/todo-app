@@ -16,7 +16,8 @@ end
 #get all to-do items
  get '/api/todos' do
   content_type :json
-  Todo.all.to_json
+  todos = Todo.all
+  todos.to_json
  end
 
  #get a specific to-do item
@@ -27,30 +28,32 @@ get '/api/todos/:id' do
 end
 
 
-
 #create new to-do item
 post '/api/tools' do
   content_type :json
-  Todo.create(params[:todo]).to_json
+  todo = Todo.create(params[:todo])
+  todo.to_json
 end
 
 #udpate specific to-do item
 put '/api/tools/:id' do
   content_type :json
-  todo = Todo.find(params[:id].to_i)
-  todo.update(params[:todo]).tojson
+  todo = Todo.find(params[:id].to_i).update(params[:todo])
+  todo.to_json
+
 end
 
 #udpate specific to-do item
 patch '/api/tools/:id' do
   content_type :json
-  todo = Todo.find(params[:id].to_i)
-  todo.update(params[:todo]).tojson
+  todo = Todo.find(params[:id].to_i).update(params[:todo]).tojson
+  todo.to_json
 end
+
 
 delete '/api/tools/:id' do
   content_type :json
-  todo = find(params[:is].to_i)
-  todo.delete(params[:todo])
+  id = find(params[:is].to_i)
+  Todo.delete(id)
   {message: '#BYEEEE'}.to_json
 end
